@@ -2,11 +2,13 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
+import A from './A'
 
 const App = () => {
   const [data, setdata] = useState()
   const [initial,setInitial]=useState('rangpur')
   const [search,setSearch]=useState('');
+  const [message,setMessege]=useState('Seaking Weather');
   useEffect(async()=>{
     const data= await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${initial}&appid=36322319baf21d82da4b8b8bdf9388b1`)
     setdata(data.data)
@@ -20,6 +22,7 @@ const  setcity=(e)=>{
   return (
     <>
     <div className="main-container">
+      <A message={message}/>
         <input
           className="search"
           name="search"
